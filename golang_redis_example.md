@@ -13,16 +13,19 @@ go get gopkg.in/redis.v5
 Complete example:
 
 ```go
-import "gopkg.in/redis.v5"
+import (
+	redis "gopkg.in/redis.v5"
+ 	"log"
+)
 func testTile38(){
 	client := redis.NewClient(&redis.Options{
 		Addr: "127.0.0.1:9851",
 	})
-	cmd := redis.NewStringCmd("SET", "fleet", "truck44", "POINT", 33.32, 115.423)
+	cmd := redis.NewStringCmd("SET", "fleet", "truck", "POINT", 33.32, 115.423)
 	client.Process(cmd)
 	v, _ := cmd.Result()
 	log.Println(v)
-	cmd1 := redis.NewStringCmd("GET", "fleet", "truck44")
+	cmd1 := redis.NewStringCmd("GET", "fleet", "truck")
 	client.Process(cmd1)
 	v1, _ := cmd1.Result()
 	log.Println(v1)
