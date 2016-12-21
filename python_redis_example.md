@@ -15,13 +15,13 @@ Complete example:
 ```python
 import redis
 def test_tile38():
-    r = redis.Redis(host='127.0.0.1', port=9851)
+    client = redis.Redis(host='127.0.0.1', port=9851)
     # insert data
-    result = r.execute_command('SET fleet truck2 POINT 33.32 115.423')
+    result = client.execute_command('SET fleet truck POINT 33.32 115.423')
     # print result
     print result
     # get data
-    print r.execute_command('GET fleet truck2')
+    print client.execute_command('GET fleet truck')
 
 if __name__ == '__main__':
     test_tile38()
